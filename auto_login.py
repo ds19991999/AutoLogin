@@ -60,7 +60,7 @@ CMD_HELP = """
 [bold green]ssh)[/bold green] 登录节点 | login
 [bold green]list)[/bold green] 节点列表
 [bold green]deploy)[/bold green] 部署教程
-[bold green]exit)[/bold green] 退出系统 | q | Ctrc+C
+[bold green]exit)[/bold green] 退出系统 | q | Ctrl+C
 
 ----------------------------------------------------------------
 """
@@ -120,30 +120,31 @@ def main():
     while True:
         try:
             print("[bold cyan]>>> [/bold cyan]", end="")
-            i = input().lower().strip()
-            if i == "help" or i == "h":
+            command = input().lower().strip()
+            if command == "help" or command == "h":
                 os.system(CLEAR)
                 print_menu()
-            elif i == "exit" or i == "q":
-                os.system(CLEAR)
+            elif command == "exit" or command == "q":
                 os.system(exit())
-            elif i == "deploy":
+            elif command == "deploy":
                 os.system(CLEAR)
                 print(DEPLOY_DOC)
-            elif i == "list":
+            elif command == "list":
                 print(IP_PRE) 
-            elif i.startswith("ssh")or i.startswith("login"):
-                ip = i.split(" ")[-1]
+            elif command.startswith("ssh")or command.startswith("login"):
+                ip = command.split(" ")[-1]
                 print(ip)
                 server.login(ip)
+            elif command == "cls" or command == "clear":
+                os.system(CLEAR)
+                print_menu()
             else:
-                os.system(i)
+                os.system(command)
         except KeyboardInterrupt:
-            os.system(CLEAR)
             os.system(exit())
-        except Exception:
+        except Exception as e:
             print_menu()
-            print("[bold red]❌内部错误![/bold red]")
+            print("[bold red]❌内部错误：[/bold red]{}".format(e))
 
 
 if __name__ == "__main__":

@@ -33,8 +33,12 @@ help) 查看帮助 | h
 ssh) 登录节点 | login
 list) 节点列表
 deploy) 部署教程
-exit) 退出系统 | q | Ctrc+C
+exit) 退出系统 | q | Ctrl+C
 ```
+
+## 同类项目
+* [AutoLogin](https://github.com/mesondzh/AutoLogin): 🔨`AutoLogin` 自动登录服务器
+* [TeleNote](https://github.com/mesondzh/TeleNote): 📝`Telegraph` 匿名笔记
 
 ## SSH模式
 
